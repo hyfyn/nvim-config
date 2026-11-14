@@ -5,8 +5,14 @@ return {
 	event = "InsertEnter",
 	dependencies = { "rafamadriz/friendly-snippets" },
 	opts = {
-		-- <C-y> accept, <C-n>/<C-p> navigate, <C-space> open menu/docs, <Tab>/<S-Tab> jump snippet placeholders
-		keymap = { preset = "default" },
+		-- <Tab> accept (or jump to next snippet placeholder), <S-Tab> previous placeholder,
+		-- <C-j>/<C-k> navigate, <C-e> close, <C-space> open menu/docs
+		keymap = {
+			preset = "super-tab",
+			["<C-j>"] = { "select_next", "fallback" },
+			["<C-k>"] = { "select_prev", "fallback" },
+			["<C-e>"] = { "hide", "fallback" },
+		},
 		completion = {
 			documentation = { auto_show = true },
 		},
