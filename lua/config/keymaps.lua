@@ -18,6 +18,10 @@ vim.keymap.set("n", "[d", function()
 	vim.diagnostic.jump({ count = -1, float = true })
 end, { desc = "Prev diagnostic" })
 
+-- Move selected lines down/up, re-indenting and keeping the selection
+vim.keymap.set("x", "J", ":m '>+1<CR>gv=gv", { silent = true, desc = "Move selection down" })
+vim.keymap.set("x", "K", ":m '<-2<CR>gv=gv", { silent = true, desc = "Move selection up" })
+
 -- Toggles (which-key shows each one's on/off state)
 Snacks.toggle.inlay_hints():map("<leader>uh")
 Snacks.toggle.diagnostics():map("<leader>ud")
